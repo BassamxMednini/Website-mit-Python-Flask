@@ -11,42 +11,40 @@
     <!-- Main Styles -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 
-    {% if title %}
-    <title>Bassam: {{ title }}</title>
-
-    {% else %}
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <title>Bassam: Home</title>
-    {% endif %}
   </head>
   <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav ml-auto">
-                <a class="nav-item nav-link" href="#">Home</a>
-                <a class="nav-item nav-link" href="#">About</a>
-                <a class="nav-item nav-link" href="#">Login</a>
-                <a class="nav-item nav-link" href="#">Register</a>
-              </div>
-            </div>
-          </nav>
-          <div class="container">
-          <div class="row">
-                <div class="col">
-                  1 of 3
-                </div>
-                <div class="col-8">
-                    {% block content %}{% endblock %}
-                </div>
-                <div class="col">
-                  3 of 3
-                </div>
-              </div>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+          <a class="nav-item nav-link" href="#">Home</a>
+          <a class="nav-item nav-link" href="#">About</a>
+          <a class="nav-item nav-link" href="#">Login</a>
+          <a class="nav-item nav-link" href="#">Register</a>
+        </div>
+      </div>
+    </nav>
+    <!-- Inhalt -->
+    <div class="container">
+      <div class="row">
+        <div class="col">
+        <!-- Linke Seite -->
+        </div>
+        <div class="col-10">
+          {% block content %}{% endblock %}
+        </div>
+        <div class="col">
+        <!-- Rechte Seite -->
+        </div>
+      </div>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
