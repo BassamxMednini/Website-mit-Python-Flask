@@ -4,4 +4,4 @@ Mithilfe dem Webframework Flask wird hier eine Blog-Website erstellt. Neben eine
 ## Version 
 Eine einfach gehaltene Navbar besitzt die Website mittlerweile. Die Posts werden über Cards angezeigt. Highlight Posts (Beiträge, die mehr Aufmerksamkeit bekommen sollen), werden ganz oben angezeigt.
 
-<img src="https://github.com/BassamxMednini/Website-mit-Python-Flask/blob/master/src/images/screenshot_1.png?raw=true" width="300" height="150" />
+<img src="https://github.com/BassamxMednini/Website-mit-Python-Flask/blob/master/images/screenshot_1.png?raw=true" width="300" height="150" />
