@@ -1,12 +1,23 @@
 {% extends "layout.html" %}
 {% block content %}
+<div class="card bg-dark text-white" style="width: 57.2rem">
+    <img class="card-img" src="{{ highlightPost['image_url'] }}" alt="Card image" style="height:15rem;">
+    <div class="card-img-overlay">
+      <h5 class="card-title"> {{ highlightPost['title'] }}</h5>
+      <p class="card-text">{{ highlightPost['content'] }} <em><a href="#">Mehr lesen.</a></em></p>
+      <p class="card-text">Geschrieben von {{ highlightPost.author }} am {{ highlightPost['date_posted'] }}</p>
+    </div>
+  </div>
     {% for post in posts %}
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="https://images.pexels.com/photos/734983/pexels-photo-734983.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Card image cap">
+    <div class="card" style="width: 28.5rem; display: inline-block;">
+      <img class="card-img-top" src="{{ post.image_url }}" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{ post.title }}</h5>
         <p class="card-text">{{ post.content }}</p>
-        <a href="#" class="btn btn-primary">Test</a>
+      </div>
+      <div class="card-footer bg-transparent border-primary">
+          <a href="#" class="btn btn-primary"><i class="fab fa-readme"></i> Mehr lesen</a>
+          <button type="button" class="btn btn-primary"><i class="fas fa-pen"></i> {{ post.author }}</button>
       </div>
     </div>
     {% endfor %}
