@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="card bg-dark text-white" style="width: 57.2rem">
+<!-- Highlight Post -->
+<div class="card bg-dark text-white mt-2" style="width: 57.2rem">
     <img class="card-img" src="{{ highlightPost['image_url'] }}" alt="Card image" style="height:15rem;">
     <div class="card-img-overlay">
       <h5 class="card-title"> {{ highlightPost['title'] }}</h5>
@@ -9,7 +10,8 @@
     </div>
   </div>
     {% for post in posts %}
-    <div class="card" style="width: 28.5rem; display: inline-block;">
+    <!-- Artikel -->
+    <div class="card mt-2" style="width: 28.5rem; display: inline-block;">
       <img class="card-img-top" src="{{ post.image_url }}" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{ post.title }}</h5>
