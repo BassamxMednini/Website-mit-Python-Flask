@@ -55,7 +55,14 @@ def register():
     return render_template('registration.html', title='Registration', form=form)
 
 # Login
-@app.route("/login")
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    # Bei erfolgreicher Anmeldung -> success-alert via Bootstrap
+    if form.validate_on_submit():
+        if form.email.data == 'admin@blog.com' and form.password.data == 'password':
+            flash(f'Du hast dich erfolgreich angemeldet. Willkommen zurück!', 'success')
+            return redirect(url_for('home'))
+        else: 
+            flash(f'Anmeldung fehlgeschlagen. Bitte versuche es erneut.', 'danger')
     return render_template('login.html', title='Login', form=form)
