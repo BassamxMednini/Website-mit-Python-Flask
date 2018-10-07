@@ -1,5 +1,5 @@
 from flask import render_template, flash, redirect, url_for
-from flaskapp import app
+from flaskapp import app, db, bcrypt
 from flaskapp.forms import RegistrationForm, LoginForm
 # Fürs generieren der Datenbank müssen
 # die jeweiligen Klassen importiert werden
@@ -51,8 +51,12 @@ def register():
     form = RegistrationForm()
     # Bei erfolgreicher Registration -> success-alert via Bootstrap
     if form.validate_on_submit():
-        flash(f'Account created for {form.username.data}. Welcome!', 'success')
-        return redirect(url_for('home'))
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
+        flash(f'Dein Account wurde erfolgreich registriert. Jetzt anmelden!', 'success')
+        return redirect(url_for('login'))
     return render_template('registration.html', title='Registration', form=form)
 
 # Login
