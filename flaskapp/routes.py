@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, url_for
 from flaskapp import app, db, bcrypt
 from flaskapp.forms import RegistrationForm, LoginForm
 from flaskapp.models import User, Post
-from flask_login import login_user, current_user
+from flask_login import login_user, current_user, logout_user
 
 # Highlight Post
 highlightPost =	{
@@ -76,3 +76,9 @@ def login():
         else:
             flash(f'Anmeldung fehlgeschlagen. Bitte versuche es erneut.', 'danger')
     return render_template('login.html', title='Login', form=form)
+
+# Ausloggen
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
