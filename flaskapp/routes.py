@@ -1,9 +1,8 @@
 from flask import render_template, flash, redirect, url_for
 from flaskapp import app, db, bcrypt
 from flaskapp.forms import RegistrationForm, LoginForm
-# Fürs generieren der Datenbank müssen
-# die jeweiligen Klassen importiert werden
 from flaskapp.models import User, Post
+from flask_login import login_user, current_user
 
 # Highlight Post
 highlightPost =	{
@@ -48,6 +47,8 @@ def home():
 # Registration
 @app.route("/register", methods=['GET', 'POST'])
 def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = RegistrationForm()
     # Bei erfolgreicher Registration -> success-alert via Bootstrap
     if form.validate_on_submit():
@@ -62,12 +63,16 @@ def register():
 # Login
 @app.route("/login", methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = LoginForm()
     # Bei erfolgreicher Anmeldung -> success-alert via Bootstrap
     if form.validate_on_submit():
-        if form.email.data == 'admin@blog.com' and form.password.data == 'password':
-            flash(f'Du hast dich erfolgreich angemeldet. Willkommen zurück!', 'success')
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user, remember=form.remember.data)
+            flash(f'Willkommen zurück!', 'success')
             return redirect(url_for('home'))
-        else: 
+        else:
             flash(f'Anmeldung fehlgeschlagen. Bitte versuche es erneut.', 'danger')
     return render_template('login.html', title='Login', form=form)
