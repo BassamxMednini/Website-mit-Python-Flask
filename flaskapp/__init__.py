@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
 
 
 ##########################
@@ -19,5 +20,8 @@ db = SQLAlchemy(app)
 
 # Passwörter werden geschlüsselt
 bcrypt = Bcrypt(app)
+
+#Login
+login_manager = LoginManager(app)
 
 from flaskapp import routes
