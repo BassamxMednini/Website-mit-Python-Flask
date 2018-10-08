@@ -11,3 +11,7 @@ Die Registration-Page ist nun fertig. Je nachdem ob alle Felder ausgefüllt sind
 
 <img src="https://github.com/BassamxMednini/Website-mit-Python-Flask/blob/master/images/registration.png?raw=true" width="300" height="150" /> <img src="https://github.com/BassamxMednini/Website-mit-Python-Flask/blob/master/images/registration_fail.png?raw=true" width="300" height="150" /> <img src="https://github.com/BassamxMednini/Website-mit-Python-Flask/blob/master/images/registration_success.png?raw=true" width="300" height="150" />
 
+## Weitere Details
+Nach jeder Registration wird der User (Benutzername, Email und Passwort) in die Datenbank gespeichert. Beim Login wird überprüft, ob der User existiert und falls dies der Fall ist, wird überprüft ob die Daten (Email und Passwort) richtig sind. Hat sich der User angemeldet, wird oben im Navbar die beiden Nav-items 'Login' und 'Registrieren' entfernt und mit dem Nav-item 'Logout' ersetzt. Je nachdem ob man sich erfolgreich angemeldet hat oder nicht, wird eine entsprechende Meldung angezeigt.
+
+<img src="https://github.com/BassamxMednini/Website-mit-Python-Flask/blob/master/images/python_login_out.gif?raw=true" width="600" height="375" />
