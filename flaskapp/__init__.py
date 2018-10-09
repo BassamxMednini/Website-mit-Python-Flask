@@ -24,4 +24,10 @@ bcrypt = Bcrypt(app)
 #Login
 login_manager = LoginManager(app)
 
+# Zugriff verwehren, wenn der User nicht angemeldet ist
+# Meldung wird via Bootstrap "warning" angezeigt
+login_manager.login_view = 'login'
+login_manager.login_message_category = 'warning'
+login_manager.login_message = u"Zugriff verwehrt. Bitte melde dich zuerst an."
+
 from flaskapp import routes
