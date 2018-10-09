@@ -1,8 +1,8 @@
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, request
 from flaskapp import app, db, bcrypt
 from flaskapp.forms import RegistrationForm, LoginForm
 from flaskapp.models import User, Post
-from flask_login import login_user, current_user, logout_user
+from flask_login import login_user, current_user, logout_user, login_required
 
 # Highlight Post
 highlightPost =	{
@@ -72,7 +72,8 @@ def login():
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
             flash(f'Willkommen zurück!', 'success')
-            return redirect(url_for('home'))
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect(url_for('home'))
         else:
             flash(f'Anmeldung fehlgeschlagen. Bitte versuche es erneut.', 'danger')
     return render_template('login.html', title='Login', form=form)
@@ -82,3 +83,9 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('home'))
+
+# Account
+@app.route("/profil")
+@login_required
+def profil():
+    return render_template('profil.html', title='Profil')
