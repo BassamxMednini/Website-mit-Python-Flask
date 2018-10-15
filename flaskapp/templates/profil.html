@@ -11,7 +11,7 @@
         </div>
         <!-- -->
         <div class="content-section mx-2 my-2">
-            <form action="" method="POST" novalidate>
+            <form action="" method="POST" enctype="multipart/form-data" novalidate>
                 {{ form.hidden_tag() }}
                 <fieldset class="form-group">
                     <div class="form-group">
@@ -40,6 +40,15 @@
                             </div>
                         {% else %}
                             {{ form.email(class='form-control form-control-lg') }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.picture.label() }}
+                        {{ form.picture(class="form-control-file") }}
+                        {% if form.picture.errors %}
+                            {% for error in form.picture.errors %}
+                                <span class="text-danger">{{ error }}</span><br>
+                            {% endfor %}
                         {% endif %}
                     </div>
                 </fieldset>
